@@ -1,0 +1,105 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ML Prediction App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>🌸 Iris Flower Prediction</h1>
+
+            <p class="subtitle">
+                Enter the flower measurements to get an ML prediction.
+            </p>
+
+            <form action="/predict" method="POST">
+
+                <div class="input-group">
+                    <label for="sepal_length">Sepal Length</label>
+                    <input
+                        type="number"
+                        id="sepal_length"
+                        name="sepal_length"
+                        step="any"
+                        placeholder="Example: 5.1"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="sepal_width">Sepal Width</label>
+                    <input
+                        type="number"
+                        id="sepal_width"
+                        name="sepal_width"
+                        step="any"
+                        placeholder="Example: 3.5"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="petal_length">Petal Length</label>
+                    <input
+                        type="number"
+                        id="petal_length"
+                        name="petal_length"
+                        step="any"
+                        placeholder="Example: 1.4"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="petal_width">Petal Width</label>
+                    <input
+                        type="number"
+                        id="petal_width"
+                        name="petal_width"
+                        step="any"
+                        placeholder="Example: 0.2"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Predict
+                </button>
+
+            </form>
+
+            {% if prediction %}
+            <div class="result">
+                <h2>Prediction</h2>
+
+                <p>{{ prediction }}</p>
+
+                <div class="confidence">
+                    Confidence: {{ confidence }}%
+                </div>
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <div class="error">
+                Error: {{ error }}
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+```
